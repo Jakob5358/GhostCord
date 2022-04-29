@@ -12,23 +12,25 @@ echo "..."
 # If it does, remove it else continue with the execution.
 
 if [[ "$OSTYPE" =~ ^darwin ]]; then
-    echo "Not yet supported..."
+    echo "[BUILD-SCRIPT-GHOSTCORD] Not yet supported..."
+    exit 1
 fi
 
 if [[ "$OSTYPE" =~ ^windows ]]; then
-    echo "Not yet supported..."
+    echo "[BUILD-SCRIPT-GHOSTCORD] Not yet supported..."
+    exit 1
 fi
 
 if [[ "$OSTYPE" =~ ^linux ]]; then
     if [ -d "$DIR" ]; then 
-  echo "[BUILD-SCRIPT-LINUX-LINUX] Removing old emited files..."
+  echo "[BUILD-SCRIPT-GHOSTCORD] Removing old emited files..."
   rm -rf "../$DIR" # Removes the dir, this only works in unix based systems.
-  echo "[BUILD-SCRIPT-LINUX] Files removed, continuing with the build..."
+  echo "[BUILD-SCRIPT-GHOSTCORD] Files removed, continuing with the build..."
   yarn run build # Builds the typescript files.
-  echo "[BUILD-SCRIPT-LINUX] Build script successfully executed."
+  echo "[BUILD-SCRIPT-GHOSTCORD] Build script successfully executed."
 else
-  echo "[BUILD-SCRIPT-LINUX] Building a fresh project..."
+  echo "[BUILD-SCRIPT-GHOSTCORD] Building a fresh project..."
   yarn run build # Builds the typescript files.
-  echo "[BUILD-SCRIPT-LINUX] Build script successfully executed."
+  echo "[BUILD-SCRIPT-GHOSTCORD] Build script successfully executed."
   fi
 fi
