@@ -1,7 +1,7 @@
 {
   "name": "@ghostcord/core",
   "version": "1.0.0",
-  "description": "The main module and application for ghost cord.",
+  "description": "The main module for ghost cord.",
   "main": "dist/root.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
