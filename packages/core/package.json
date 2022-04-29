@@ -10,9 +10,16 @@
     "build": "tsc -p tsconfig.json",
     "format": "prettier --write {src,scripts}/**/*.ts"
   },
-  "keywords": [],
+  "keywords": [
+    "discord.js",
+    "framework"
+  ],
   "author": "ThatGuyJamal#2659",
   "license": "GPL-3.0",
+  "dependencies": {
+    "@discordjs/builders": "^0.13.0",
+    "discord.js": "^13.6.0"
+  },
   "devDependencies": {
     "@types/node": "^17.0.30",
     "prettier": "^2.6.2",
@@ -22,9 +29,5 @@
     "node": ">=17.0",
     "npm": ">=7"
   },
-  "packageManager": "yarn@3.1.1",
-  "dependencies": {
-    "@discordjs/builders": "^0.13.0",
-    "discord.js": "^13.6.0"
-  }
+  "packageManager": "yarn@3.1.1"
 }
