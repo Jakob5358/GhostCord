@@ -1,5 +1,9 @@
 import { GhostCommandOptions } from "../types/GhostCommandOptions";
 
+/**
+ * The base command class
+ * @since 1.0.0
+ */
 export class GhostCommand {
   constructor(private options: GhostCommandOptions) {}
 
