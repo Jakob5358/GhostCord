@@ -1,0 +1,27 @@
+{
+  "name": "@ghostcord/plugins",
+  "version": "1.0.0",
+  "description": "The plugin module for ghost cord.",
+  "main": "./dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc:init": "tsc --init",
+    "watch": "tsc -b src -w",
+    "build": "tsc -p tsconfig.json",
+    "format": "prettier --write {src,scripts}/**/*.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "@types/node": "^17.0.30",
+    "prettier": "^2.6.2",
+    "tslib": "^2.4.0",
+    "typescript": "^4.6.4"
+  },
+  "engines": {
+    "node": ">=17.0",
+    "npm": ">=7"
+  },
+  "packageManager": "yarn@3.1.1"
+}
