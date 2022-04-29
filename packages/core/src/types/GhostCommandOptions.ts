@@ -1,5 +1,5 @@
-import { CommandInteraction } from 'discord.js';
-import { GhostClient } from '../structures/GhostClient';
+import { CommandInteraction } from "discord.js";
+import { GhostClient } from "../structures/GhostClient";
 
 /**
  * The command options

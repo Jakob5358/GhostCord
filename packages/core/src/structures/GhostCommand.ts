@@ -14,7 +14,7 @@ export class GhostCommand {
   get description() {
     return this.options.name;
   }
-  
+
   get run() {
     return this.options.run;
   }

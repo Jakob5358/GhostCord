@@ -1,5 +1,5 @@
-import { Client } from 'discord.js'; 
-import { GhostOptions } from '../types/GhostOptions';
+import { Client } from "discord.js";
+import { GhostOptions } from "../types/GhostOptions";
 
 /**
  * The extended client class.
