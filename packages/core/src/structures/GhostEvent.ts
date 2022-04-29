@@ -1,9 +1,8 @@
-import { BaseEventsType, GhostEvent } from "../types/GhostEvent";
+import { BaseEventsType, GhostEventType } from "../types/GhostEvent";
 
 /**
  * Our event handler
  * @param event The data of the event
- * @returns
  * @since 1.0.0
  */
-export const GhostEventManager = <T extends BaseEventsType>(event: GhostEvent<T>) => event;
+export const GhostEvent = <T extends BaseEventsType>(event: GhostEventType<T>) => event;

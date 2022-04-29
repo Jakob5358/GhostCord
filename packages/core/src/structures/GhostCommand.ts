@@ -5,7 +5,7 @@ import { GhostCommandOptions } from "../types/GhostCommandOptions";
  * @since 1.0.0
  */
 export class GhostCommand {
-  constructor(private options: GhostCommandOptions) {}
+  constructor(protected options: GhostCommandOptions) {}
 
   get name() {
     return this.options.name;
