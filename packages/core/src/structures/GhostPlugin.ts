@@ -14,11 +14,7 @@ export class GhostPluginManager {
    */
   public constructor(adaptors?: GhostPluginType[]) {
     if (adaptors) {
-      // Loads all plugins into the cache
-      for (const plugin of adaptors.values()) {
-        this.pluginStore.set(plugin.name, plugin);
-        container.logger.debug(`Loaded plugin ${plugin.name}`);
-      }
+      // we dont need to set the adaptors in the plugin store, as they are already set in the client instance on load
       this.loadPlugins();
     } else {
       container.logger.warn("You called the plugin manager but didn't pass any plugins to it!");
