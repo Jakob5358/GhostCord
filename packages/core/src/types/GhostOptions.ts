@@ -11,4 +11,6 @@ export interface GhostOptions extends ClientOptions {
   commandPattern: string;
   eventPattern: string;
   plugins?: GhostPluginType[];
+  /** If debug mode should be enabled for the framework. */
+  debug?: boolean;
 }
