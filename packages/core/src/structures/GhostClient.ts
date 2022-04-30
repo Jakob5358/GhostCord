@@ -2,9 +2,10 @@ import { Client, Collection } from "discord.js";
 import { GhostOptions } from "../types/GhostOptions";
 import { GhostCommand } from "./GhostCommand";
 import { GhostEventType } from "../types/GhostEvent";
-import { search } from "./GhostUtils";
+import { search } from "../utils/glob";
 import { GhostPluginManager } from "./GhostPlugin";
 import { EventNames } from "../types/GhostEvent";
+import { container } from "./GhostContainer";
 
 /**
  * The extended client class for GhostCord.
@@ -13,12 +14,14 @@ import { EventNames } from "../types/GhostEvent";
 export class GhostClient extends Client {
   public commands = new Collection<string, GhostCommand>();
   public PluginManager = new GhostPluginManager();
+  public logger = container.logger
   public constructor(public options: GhostOptions) {
     super(options);
     if (options.plugins) {
       for (const plugin of options.plugins) {
-        this.PluginManager.plugins.set(plugin.name, plugin);
+        this.PluginManager.pluginStore.set(plugin.name, plugin);
       }
+      this.logger.debug("Loaded plugins into the plugin manager");
     }
   }
 
@@ -27,7 +30,7 @@ export class GhostClient extends Client {
    * @since 1.0.0
    */
   public async start() {
-    await this.loadCommands();
+    await this.registerCommands();
     await this.registerEvents();
     await this.login(this.options.token);
   }
@@ -36,7 +39,7 @@ export class GhostClient extends Client {
    * Loads all commands into the client.
    * @since 1.0.0
    */
-  private async loadCommands() {
+  private async registerCommands() {
     const filePaths = await search(this.options.commandPattern);
     for await (const path of filePaths) {
       const file = await import(path);
