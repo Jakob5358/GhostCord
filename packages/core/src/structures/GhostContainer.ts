@@ -6,15 +6,15 @@ import { GhostLogger } from "../utils/logger";
  * @since 1.0.0
  */
 export interface GhostContainer {
-    logger: GhostLogger;
+  logger: GhostLogger;
 }
 
 /**
  * Container Object for GhostCord.
  * This can be used to access the logger, plugins, etc outside of the core framework.
- * 
+ *
  * @since 1.0.0
  */
 export const container: GhostContainer = {
-    logger: new GhostLogger()
-}
+  logger: new GhostLogger(),
+};

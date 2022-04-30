@@ -11,10 +11,9 @@ export interface GhostEventType<T extends BaseEventsType> {
   run: GhostEventRun<T>;
 }
 
-
 export enum EventNames {
-    COMMAND_EXCEPTION = 'commandException',
-    COMMAND_NOT_FOUND = "commandNotFound",
-    COMMAND_LOADED = 'commandLoaded',
-    EVENT_LOADED = 'eventLoaded'
+  COMMAND_EXCEPTION = "commandException",
+  COMMAND_NOT_FOUND = "commandNotFound",
+  COMMAND_LOADED = "commandLoaded",
+  EVENT_LOADED = "eventLoaded",
 }
