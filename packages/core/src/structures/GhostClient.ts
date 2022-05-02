@@ -13,13 +13,12 @@ import { container } from "./GhostContainer";
  */
 export class GhostClient extends Client {
   public commands = new Collection<string, GhostCommand>();
-  public PluginManager = new GhostPluginManager();
   public logger = container.logger
   public constructor(public options: GhostOptions) {
     super(options);
     if (options.plugins) {
       for (const plugin of options.plugins) {
-        this.PluginManager.pluginStore.set(plugin.name, plugin);
+        container.PluginManager.pluginStore.set(plugin.name, plugin);
       }
       this.logger.debug("Loaded plugins into the plugin manager");
     }
