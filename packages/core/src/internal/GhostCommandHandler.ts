@@ -1,5 +1,6 @@
 import { EventNames } from "../types/GhostEvent";
 import { GhostEvent } from "../structures/GhostEvent";
+import { container } from "../structures/GhostContainer";
 
 /**
  * GhostCord Command Event Handler
@@ -16,8 +17,8 @@ export default GhostEvent({
 
     try {
       // Run preconditions, we can also have plugins like @GhostCord/cooldowns to allow for cooldowns
-      if (client.PluginManager.pluginStore.has("cooldown")) {
-        await client.PluginManager.pluginStore.get("cooldown")?.run(client, interaction);
+      if (container.PluginManager.pluginStore.has("cooldown")) {
+        await container.PluginManager.pluginStore.get("cooldown")?.run(client, interaction);
       }
       await command.run(interaction, client);
     } catch (err: any) {

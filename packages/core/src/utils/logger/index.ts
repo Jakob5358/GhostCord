@@ -1,4 +1,5 @@
 import Consola from "consola";
+import { container } from "../../structures/GhostContainer";
 
 export class GhostLogger {
   public info(message: string) {
@@ -13,11 +14,9 @@ export class GhostLogger {
   }
 
   public debug(message: string) {
-    if (process.env.NODE_ENV === "development") {
+    if (container.config.debug) {
       Consola.debug(message);
-    } else {
-      return void 0;
-    }
+    } 
   }
 
   public success(message: string) {

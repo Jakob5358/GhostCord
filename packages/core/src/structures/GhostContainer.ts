@@ -1,4 +1,5 @@
 import { GhostLogger } from "../utils/logger";
+import { GhostPluginManager } from "./GhostPlugin";
 
 /**
  * Container for the a ghost component.
@@ -7,6 +8,7 @@ import { GhostLogger } from "../utils/logger";
  */
 export interface GhostContainer {
   logger: GhostLogger;
+  ghostConfig: GhostGlobalConfig;
 }
 
 /**
@@ -15,6 +17,37 @@ export interface GhostContainer {
  *
  * @since 1.0.0
  */
-export const container: GhostContainer = {
-  logger: new GhostLogger(),
-};
+export class GhostContainer {
+  /** The internal logger for GhostCord */
+  public logger: GhostLogger = new GhostLogger();
+  /** The global defaults for the framework configuration */
+  public readonly defaultConfig: GhostGlobalConfig = {
+    debug: false,
+  }
+  /** Where the config is stored */
+  public config: GhostGlobalConfig = {
+    ...this.defaultConfig,
+  }
+  /**
+   * Access to the plugin manager.
+   */
+  public PluginManager: GhostPluginManager = new GhostPluginManager();
+
+  public constructor(protected options?: GhostGlobalConfig) {
+    if (options) {
+      this.config = {
+        ...options,
+      };
+    }
+  }
+}
+
+export const container = new GhostContainer();
+
+/**
+ * The global configuration for GhostCord.
+ * @since 1.0.0
+ */
+interface GhostGlobalConfig {
+  debug: boolean;
+}
