@@ -5,17 +5,17 @@ import { GhostCommandOptions } from "../types/GhostCommandOptions";
  * @since 1.0.0
  */
 export class GhostCommand {
-  constructor(protected options: GhostCommandOptions) {}
+  public constructor(protected options: GhostCommandOptions) {}
 
-  get name() {
+  public get name() {
     return this.options.name;
   }
 
-  get description() {
+  public get description() {
     return this.options.name;
   }
 
-  get run() {
+  public get run() {
     return this.options.run;
   }
 }
