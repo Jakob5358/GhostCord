@@ -4,24 +4,12 @@ A powerful discord bot framework built on [typescript](https://www.typescriptlan
 
 - - -
 
-This is a mono repository for all the GhostCord packages.
+## Information
 
-## `Packages`
-
-- [core](./packages/core/) - The main module for the GhostCord framework.
-
-```
-npm install @ghostcord/core
-```
-
-- [Utilities](./packages/utilities/) - A collection of utility function for GhostCord.
-
-```
-npm install @ghostcord/utilities
-```
+*soon*
 
 ## Links
 
-[Community Support]()
+[Community Support](https://discord.gg/73KvNCABPc)
 
 [Documentation]()
