@@ -2,7 +2,7 @@
   "name": "@ghostcord/core",
   "version": "1.0.0",
   "description": "The main module for ghost cord.",
-  "main": "dist/root.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "node ./test/glob.test.js",
     "tsc:init": "tsc --init",
