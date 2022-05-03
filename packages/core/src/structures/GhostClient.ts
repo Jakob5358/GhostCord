@@ -3,7 +3,6 @@ import { GhostOptions } from "../types/GhostOptions";
 import { GhostCommand } from "./GhostCommand";
 import { GhostEventType } from "../types/GhostEvent";
 import { search } from "../utils/glob";
-import { GhostPluginManager } from "./GhostPlugin";
 import { EventNames } from "../types/GhostEvent";
 import { container } from "./GhostContainer";
 

@@ -4,7 +4,7 @@
   "description": "The main module for ghost cord.",
   "main": "dist/root.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node ./test/glob.test.js",
     "tsc:init": "tsc --init",
     "watch": "tsc -b src -w",
     "build": "tsc -p tsconfig.json",
