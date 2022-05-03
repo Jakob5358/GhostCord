@@ -2,7 +2,6 @@ import { Client, Collection } from "discord.js";
 import { GhostOptions } from "../types/GhostOptions";
 import { GhostCommand } from "./GhostCommand";
 import { GhostEventType } from "../types/GhostEvent";
-import { search } from "../utils/glob";
 import { EventNames } from "../types/GhostEvent";
 import { container } from "./GhostContainer";
 
@@ -12,14 +11,13 @@ import { container } from "./GhostContainer";
  */
 export class GhostClient extends Client {
   public commands = new Collection<string, GhostCommand>();
-  public logger = container.logger;
   public constructor(public options: GhostOptions) {
     super(options);
     if (options.plugins) {
       for (const plugin of options.plugins) {
         container.PluginManager.pluginStore.set(plugin.name, plugin);
       }
-      this.logger.debug("Loaded plugins into the plugin manager");
+      container.logger.debug("Loaded plugins into the plugin manager");
     }
   }
 
@@ -38,8 +36,7 @@ export class GhostClient extends Client {
    * @since 1.0.0
    */
   private async registerCommands() {
-    const filePaths = await search(this.options.commandPattern);
-    for await (const path of filePaths) {
+    for await (const path of this.options.commands) {
       const file = await import(path);
       const command: GhostCommand = file.default;
 
@@ -53,10 +50,14 @@ export class GhostClient extends Client {
    * @since 1.0.0
    */
   private async registerEvents() {
-    const filePaths = await search(this.options.eventPattern);
-    for await (const path of filePaths) {
+    for await (const path of this.options.events) {
       const file = await import(path);
       const event: GhostEventType<any> = file.default;
+
+      if (!event || !event.name || !event.run) {
+        container.logger.warn(`Event at ${path} doesn\'t seem to be correctly exporting an event`)
+        continue;
+      }
 
       this[event.once ? "once" : "on"](event.name, (...args: any[]) => void event.run(this, ...args));
       this.emit(EventNames.EVENT_LOADED, event);

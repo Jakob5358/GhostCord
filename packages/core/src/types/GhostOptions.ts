@@ -9,13 +9,13 @@ export interface GhostOptions extends ClientOptions {
   token: string;
   pluginPattern: string;
   /**
-   * The path to your commands dir.
+   * The paths to your commands
    */
-  commandPattern: string;
+  commands: string[];
   /**
-   * The path to your events dir.
+   * The path to your events
    */
-  eventPattern: string;
+  events: string[];
   plugins?: GhostPluginType[];
   /** If debug mode should be enabled for the framework. */
   debug?: boolean;

@@ -27,6 +27,10 @@ export interface GhostCommandOptions {
      */
     userRequiredPermissions?: PermissionResolvable | PermissionResolvable[];
     /**
+     * The command cooldown
+     */
+    cooldown?: string;
+    /**
      * The command execution logic
      */
     run: (interaction: CommandInteraction<"cached">, client: GhostClient) => unknown | Promise<unknown>;

@@ -8,7 +8,6 @@ import { GhostCommand } from "./GhostCommand";
 export declare class GhostClient extends Client {
     options: GhostOptions;
     commands: Collection<string, GhostCommand>;
-    logger: import("../utils/logger").GhostLogger;
     constructor(options: GhostOptions);
     /**
      * Starts all base instances and utilities.

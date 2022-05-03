@@ -5,10 +5,11 @@ const search = promisify(glob);
 
 console.log("Searching for files...");
 
-search("commands/**/*.js").then( (files) => {
+search(__dirname + "commands/**/*.js").then((files) => {
   if (!files.length) {
     console.log("No files found");
+  } else {
+    console.log(`Found ${files.length} files`);
+    console.log(files);
   }
-  console.log("Found files:");
-  console.log(files);
 });

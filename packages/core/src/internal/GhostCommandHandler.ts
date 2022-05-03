@@ -1,6 +1,5 @@
 import { EventNames } from "../types/GhostEvent";
 import { GhostEvent } from "../structures/GhostEvent";
-import { container } from "../structures/GhostContainer";
 
 /**
  * GhostCord Command Event Handler
@@ -16,13 +15,15 @@ export default GhostEvent({
     if (!command) return client.emit(EventNames.COMMAND_NOT_FOUND, interaction);
 
     try {
-      // Run preconditions, we can also have plugins like @GhostCord/cooldowns to allow for cooldowns
-      if (container.PluginManager.pluginStore.has("cooldown")) {
-        await container.PluginManager.pluginStore.get("cooldown")?.run(client, interaction);
-      }
       await command.run(interaction, client);
     } catch (err: any) {
-      return client.emit(EventNames.COMMAND_EXCEPTION, interaction, err);
+      client.emit(EventNames.COMMAND_EXCEPTION, interaction, err);
+
+      if (client.listeners(EventNames.COMMAND_EXCEPTION).length) return;
+
+      await interaction[interaction.deferred ? "editReply" : interaction.replied ? "followUp" : "reply"]({
+        content: `❌ ${err}`,
+      });
     }
   },
 });

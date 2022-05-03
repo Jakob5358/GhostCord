@@ -1,3 +1,4 @@
+import { GhostCooldownHandler } from "../internal/GhostCooldownHandler";
 import { GhostCommandOptions } from "../types/GhostCommandOptions";
 
 /**
@@ -5,6 +6,7 @@ import { GhostCommandOptions } from "../types/GhostCommandOptions";
  * @since 1.0.0
  */
 export class GhostCommand {
+  private cooldownHandler = new GhostCooldownHandler(this);
   public constructor(protected options: GhostCommandOptions) {}
 
   public get name() {
@@ -13,6 +15,18 @@ export class GhostCommand {
 
   public get description() {
     return this.options.name;
+  }
+
+  public get clientRequiredPermissions() {
+    return this.options.clientRequiredPermissions;
+  }
+
+  public get userRequiredPermissions() {
+    return this.options.userRequiredPermissions;
+  }
+
+  public get cooldown() {
+    return this.options.cooldown;
   }
 
   public get run() {

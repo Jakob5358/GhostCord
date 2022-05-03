@@ -1,0 +1,43 @@
+{
+  "name": "@ghostcord/core",
+  "version": "1.0.0",
+  "description": "Yet another discord bot framework for interacting with the discord.js API.",
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "format": "turbo run format",
+    "update": "yarn upgrade-interactive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GhostCord/source.git"
+  },
+  "keywords": [
+    "discord",
+    "api",
+    "bot",
+    "client",
+    "node",
+    "discordapp",
+    "ghostcord"
+  ],
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://github.com/GhostCord/source#readme",
+  "bugs": {
+    "url": "https://github.com/GhostCord/source/issues"
+  },
+  "devDependencies": {
+    "prettier": "^2.6.2",
+    "turbo": "^1.2.4"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "packageManager": "yarn@3.1.1",
+  "engines": {
+    "node": ">=16.9.0"
+  }
+}

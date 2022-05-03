@@ -1,4 +1,4 @@
-import { BaseEventsType, GhostEventType } from "../types/GhostEvent";
+import { BaseEventsType, EventNames, GhostEventType } from "../types/GhostEvent";
 
 /**
  * Our event handler

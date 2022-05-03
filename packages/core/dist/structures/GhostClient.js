@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GhostClient = void 0;
 const discord_js_1 = require("discord.js");
-const glob_1 = require("../utils/glob");
 const GhostEvent_1 = require("../types/GhostEvent");
 const GhostContainer_1 = require("./GhostContainer");
 /**
@@ -12,7 +11,6 @@ const GhostContainer_1 = require("./GhostContainer");
 class GhostClient extends discord_js_1.Client {
     options;
     commands = new discord_js_1.Collection();
-    logger = GhostContainer_1.container.logger;
     constructor(options) {
         super(options);
         this.options = options;
@@ -20,7 +18,7 @@ class GhostClient extends discord_js_1.Client {
             for (const plugin of options.plugins) {
                 GhostContainer_1.container.PluginManager.pluginStore.set(plugin.name, plugin);
             }
-            this.logger.debug("Loaded plugins into the plugin manager");
+            GhostContainer_1.container.logger.debug("Loaded plugins into the plugin manager");
         }
     }
     /**
@@ -37,8 +35,7 @@ class GhostClient extends discord_js_1.Client {
      * @since 1.0.0
      */
     async registerCommands() {
-        const filePaths = await (0, glob_1.search)(this.options.commandPattern);
-        for await (const path of filePaths) {
+        for await (const path of this.options.commands) {
             const file = await Promise.resolve().then(() => __importStar(require(path)));
             const command = file.default;
             this.commands.set(command.name, command);
@@ -50,10 +47,13 @@ class GhostClient extends discord_js_1.Client {
      * @since 1.0.0
      */
     async registerEvents() {
-        const filePaths = await (0, glob_1.search)(this.options.eventPattern);
-        for await (const path of filePaths) {
+        for await (const path of this.options.events) {
             const file = await Promise.resolve().then(() => __importStar(require(path)));
             const event = file.default;
+            if (!event || !event.name || !event.run) {
+                GhostContainer_1.container.logger.warn(`Event at ${path} doesn\'t seem to be correctly exporting an event`);
+                continue;
+            }
             this[event.once ? "once" : "on"](event.name, (...args) => void event.run(this, ...args));
             this.emit(GhostEvent_1.EventNames.EVENT_LOADED, event);
         }
