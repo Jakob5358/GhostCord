@@ -8,7 +8,13 @@ import { GhostPluginType } from "./GhostPlugin";
 export interface GhostOptions extends ClientOptions {
   token: string;
   pluginPattern: string;
+  /**
+   * The path to your commands dir.
+   */
   commandPattern: string;
+  /**
+   * The path to your events dir.
+   */
   eventPattern: string;
   plugins?: GhostPluginType[];
   /** If debug mode should be enabled for the framework. */
