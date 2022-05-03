@@ -1,5 +1,5 @@
 {
-  "name": "@ghostcord/core",
+  "name": "@ghostcord/ghostcord",
   "version": "1.0.0",
   "description": "Yet another discord bot framework for interacting with the discord.js API.",
   "private": true,
