@@ -1,5 +1,5 @@
 {
-  "name": "@ghostcord/core",
+  "name": "@ghostcord/ghostcord",
   "version": "1.0.0",
   "description": "The main module for ghost cord.",
   "main": "dist/index.js",
