@@ -23,11 +23,11 @@ export class GhostContainer {
   /** The global defaults for the framework configuration */
   public readonly defaultConfig: GhostGlobalConfig = {
     debug: false,
-  }
+  };
   /** Where the config is stored */
   public config: GhostGlobalConfig = {
     ...this.defaultConfig,
-  }
+  };
   /**
    * Access to the plugin manager.
    */

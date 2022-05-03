@@ -1,0 +1,1 @@
+{"version":3,"file":"GhostCommand.d.ts","sourceRoot":"","sources":["../../src/structures/GhostCommand.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,mBAAmB,EAAE,MAAM,8BAA8B,CAAC;AAEnE;;;GAGG;AACH,qBAAa,YAAY;IACJ,SAAS,CAAC,OAAO,EAAE,mBAAmB;gBAA5B,OAAO,EAAE,mBAAmB;IAEzD,IAAW,IAAI,WAEd;IAED,IAAW,WAAW,WAErB;IAED,IAAW,GAAG,6HAEb;CACF"}

@@ -16,7 +16,7 @@ export class GhostLogger {
   public debug(message: string) {
     if (container.config.debug) {
       Consola.debug(message);
-    } 
+    }
   }
 
   public success(message: string) {

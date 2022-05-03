@@ -12,7 +12,7 @@ import { container } from "./GhostContainer";
  */
 export class GhostClient extends Client {
   public commands = new Collection<string, GhostCommand>();
-  public logger = container.logger
+  public logger = container.logger;
   public constructor(public options: GhostOptions) {
     super(options);
     if (options.plugins) {
