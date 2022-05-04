@@ -71,11 +71,10 @@ export class GhostClient extends Client {
 			this.emit(EventNames.EVENT_LOADED, event);
 		}
 	}
-
-  /**
-   * Emits an event based on the interaction.
-   * @param interaction The command interaction to emit.
-   */
+	/**
+	 * Emits an event based on the interaction.
+	 * @param interaction The command interaction to emit.
+	 */
 	public commandEmitter(interaction: CommandInteraction<"cached">) {
 		this.on(EventNames.COMMAND_NOT_FOUND, () => {
 			container.logger.debug(`Command ${interaction.commandName} (${interaction.commandId}) not found`);
