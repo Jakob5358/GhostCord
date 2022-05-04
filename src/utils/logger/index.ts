@@ -34,4 +34,8 @@ export class GhostLogger {
 	public trace(message: string) {
 		Consola.trace(message);
 	}
+
+	public get getLogger() {
+		return Consola;
+	}
 }
