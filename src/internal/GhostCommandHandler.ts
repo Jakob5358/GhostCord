@@ -13,10 +13,7 @@ export default GhostEvent({
 		if (!interaction.inCachedGuild()) return client.emit("uncachedGuild", interaction);
 
 		const command = client.commands.get(interaction.commandName);
-		if (!command) {
-			client.commandEmitter(interaction);
-			return;
-		}
+		if (!command) return client.emit(EventNames.COMMAND_NOT_FOUND, interaction);
 
 		try {
 			await command.run(interaction, client);
