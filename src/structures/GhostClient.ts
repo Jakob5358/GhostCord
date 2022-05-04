@@ -22,13 +22,19 @@ export class GhostClient extends Client {
 	}
 
 	/**
-	 * Starts all base instances and utilities.
+	 * Starts the bot client, loads all commands, events, and plugins then connects us with the Discord API.
+	 * @param {boolean} noLogin If true, the bot will not login to the Discord API. This is useful if you wish to login from another place in your code.
+	 * @default false
 	 * @since 1.0.0
 	 */
-	public async start() {
+	public async start(noLogin: boolean = false) {
 		await this.registerCommands();
 		await this.registerEvents();
-		await this.login(this.options.token);
+		if (noLogin === false) {
+			await this.login(this.options.token);
+		} else {
+			container.logger.debug("No login was specified, skipping login!");
+		}
 	}
 
 	/**

@@ -5,11 +5,10 @@ import ms from "ms";
 export class GhostCooldownHandler {
 	protected cooldowns = new Collection<string, number>();
 
-	public constructor(protected command: GhostCommand) { }
-
+	public constructor(protected command: GhostCommand) {}
 
 	/**
-	 * 
+	 *
 	 * @param userId The user id to check
 	 * @returns {boolean} Whether the user is on cooldown
 	 */
@@ -25,14 +24,14 @@ export class GhostCooldownHandler {
 		if (cooldown) {
 			return {
 				response: `You\'re on cooldown for ${ms(Date.now() - cooldown, { long: true })}`,
-				value: true
-			}
+				value: true,
+			};
 		}
 
 		return {
 			response: `You\'re not on cooldown`,
-			value: false
-		}
+			value: false,
+		};
 	}
 
 	/**
