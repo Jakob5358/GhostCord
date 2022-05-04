@@ -15,7 +15,7 @@ class GhostLogger {
         consola_1.default.warn(message);
     }
     debug(message) {
-        if (GhostContainer_1.container.config.debug) {
+        if (GhostContainer_1.container.config().debug) {
             consola_1.default.debug(message);
         }
     }
