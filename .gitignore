@@ -15,7 +15,8 @@ pids
 .env
 
 # Dist
-dist/
+# Disabled until testing is done, once on npm, we will not need this.
+# dist/
 
 # Miscellaneous
 .tmp/
