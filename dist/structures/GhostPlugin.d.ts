@@ -12,7 +12,7 @@ export declare class GhostPluginManager {
      */
     constructor(adaptors?: GhostPluginType[]);
     /**
-     * Searches for a plugin by name and returns it.
+     * Searches for a plugin by name and returns its data.
      * @param pluginName name of the plugin
      * @returns {GhostPluginType | null}
      * @since 1.0.0

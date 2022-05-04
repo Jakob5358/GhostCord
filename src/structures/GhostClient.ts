@@ -22,13 +22,19 @@ export class GhostClient extends Client {
 	}
 
 	/**
-	 * Starts all base instances and utilities.
+	 * Starts the bot client, loads all commands, events, and plugins then connects us with the Discord API.
+	 * @param {boolean} noLogin If true, the bot will not login to the Discord API. This is useful if you wish to login from another place in your code.
+	 * @default false
 	 * @since 1.0.0
 	 */
-	public async start() {
+	public async start(noLogin: boolean = false) {
 		await this.registerCommands();
 		await this.registerEvents();
-		await this.login(this.options.token);
+		if (noLogin === false) {
+			await this.login(this.options.token);
+		} else {
+			container.logger.debug("No login was specified, skipping login!");
+		}
 	}
 
 	/**
@@ -70,16 +76,5 @@ export class GhostClient extends Client {
 			this[event.once ? "once" : "on"](event.name, (...args: any[]) => void event.run(this, ...args));
 			this.emit(EventNames.EVENT_LOADED, event);
 		}
-	}
-
-  /**
-   * Emits an event based on the interaction.
-   * @param interaction The command interaction to emit.
-   */
-	public commandEmitter(interaction: CommandInteraction<"cached">) {
-		this.on(EventNames.COMMAND_NOT_FOUND, () => {
-			container.logger.debug(`Command ${interaction.commandName} (${interaction.commandId}) not found`);
-		});
-		this.emit(EventNames.COMMAND_NOT_FOUND, interaction);
 	}
 }

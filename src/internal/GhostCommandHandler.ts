@@ -8,15 +8,12 @@ import { GhostClient } from "../structures/GhostClient";
  */
 export default GhostEvent({
 	name: "interactionCreate",
-  async run(client: GhostClient, interaction) {
+	async run(client: GhostClient, interaction) {
 		if (!interaction.isCommand()) return;
 		if (!interaction.inCachedGuild()) return client.emit("uncachedGuild", interaction);
 
 		const command = client.commands.get(interaction.commandName);
-		if (!command) {
-			client.commandEmitter(interaction)
-			return;
-		}
+		if (!command) return client.emit(EventNames.COMMAND_NOT_FOUND, interaction);
 
 		try {
 			await command.run(interaction, client);

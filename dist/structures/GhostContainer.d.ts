@@ -7,7 +7,9 @@ import { GhostPluginManager } from "./GhostPlugin";
  */
 export interface GhostContainer {
     logger: GhostLogger;
-    ghostConfig: GhostGlobalConfig;
+    PluginManager: GhostPluginManager;
+    config: (options?: GhostGlobalConfig) => GhostGlobalConfig;
+    defaultConfig: GhostGlobalConfig;
 }
 /**
  * Container Object for GhostCord.
@@ -15,27 +17,36 @@ export interface GhostContainer {
  *
  * @since 1.0.0
  */
-export declare class GhostContainer {
-    protected options?: GhostGlobalConfig | undefined;
-    /** The internal logger for GhostCord */
-    logger: GhostLogger;
-    /** The global defaults for the framework configuration */
-    readonly defaultConfig: GhostGlobalConfig;
-    /** Where the config is stored */
-    config: GhostGlobalConfig;
-    /**
-     * Access to the plugin manager.
-     */
-    PluginManager: GhostPluginManager;
-    constructor(options?: GhostGlobalConfig | undefined);
-}
 export declare const container: GhostContainer;
 /**
  * The global configuration for GhostCord.
  * @since 1.0.0
  */
 interface GhostGlobalConfig {
-    debug: boolean;
+    /**
+     * If debug mode is enabled.
+     * @default false
+     * @since 1.0.0
+     */
+    debug?: boolean;
+    /**
+     * An Array of Id's which have access to the bot's owner permission level.
+     * @since 1.0.0
+     */
+    bot_owners?: Array<string>;
+    /**
+     * An Array of Id's which have access to the bot's admin permission level.
+     * @since 1.0.0
+     **/
+    bot_supporters?: Array<string>;
+    /**
+     * An Array of Id's which bypass the cooldown inhibitor.
+     */
+    bot_cooldown_bypass?: {
+        users: Array<string>;
+        roles: Array<string>;
+        channels: Array<string>;
+    };
 }
 export {};
 //# sourceMappingURL=GhostContainer.d.ts.map

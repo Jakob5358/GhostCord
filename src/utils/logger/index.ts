@@ -14,7 +14,7 @@ export class GhostLogger {
 	}
 
 	public debug(message: string) {
-		if (container.config.debug) {
+		if (container.config().debug) {
 			Consola.debug(message);
 		}
 	}
@@ -33,5 +33,9 @@ export class GhostLogger {
 
 	public trace(message: string) {
 		Consola.trace(message);
+	}
+
+	public get getLogger() {
+		return Consola;
 	}
 }
