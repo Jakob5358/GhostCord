@@ -6,7 +6,7 @@ import { GhostCommandOptions } from "../types/GhostCommandOptions";
  * @since 1.0.0
  */
 export class GhostCommand {
-	private cooldownHandler = new GhostCooldownHandler(this);
+	protected cooldownHandler = new GhostCooldownHandler(this);
 	public constructor(protected options: GhostCommandOptions) {}
 
 	public get name() {

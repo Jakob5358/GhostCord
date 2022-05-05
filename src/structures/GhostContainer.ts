@@ -10,7 +10,7 @@ import { GhostPluginManager } from "./GhostPlugin";
 export interface GhostContainer {
 	logger: GhostLogger;
 	PluginManager: GhostPluginManager;
-	config: (options?: GhostGlobalConfig) => GhostGlobalConfig;
+	config: (options?: Partial<GhostGlobalConfig>) => GhostGlobalConfig;
 	defaultConfig: GhostGlobalConfig;
 }
 
@@ -21,12 +21,8 @@ export interface GhostContainer {
  */
 export const container: GhostContainer = {
 	logger: new GhostLogger(),
-	config: function (options) {
-		if (!options) {
-			return this.defaultConfig;
-		} else {
-			return options;
-		}
+	config(options) {
+		return { ...this.defaultConfig, ...options };
 	},
 	PluginManager: new GhostPluginManager(),
 	defaultConfig: {
