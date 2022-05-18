@@ -1,5 +1,5 @@
 import Consola from "consola";
-import { container } from "../../structures/GhostContainer";
+import { container } from "../structures/GhostContainer";
 
 export class GhostLogger {
 	public info(message: string) {

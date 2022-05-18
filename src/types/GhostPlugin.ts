@@ -1,7 +1,14 @@
 import { CommandInteraction } from "discord.js";
 import { GhostClient } from "../structures/GhostClient";
 
-export interface GhostPluginType {
-	name: string;
-	run: (client: GhostClient, interaction: CommandInteraction) => Promise<unknown> | unknown;
+interface CommandPlugin {
+	inject: "CommandFired";
+	run: (client: GhostClient, interaction: CommandInteraction<"cached">) => unknown;
 }
+
+interface StartPlugin {
+	inject: "Initialization";
+	run: (client: GhostClient) => unknown;
+}
+
+export type GhostPlugin = CommandPlugin | StartPlugin;

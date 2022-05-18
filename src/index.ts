@@ -1,10 +1,11 @@
+import "reflect-metadata";
+
 export * from "./structures/GhostClient";
 export * from "./structures/GhostCommand";
-export * from "./structures/GhostEvent";
-export * from "./structures/GhostPlugin";
+export * from "./structures/GhostListener";
 export * from "./structures/GhostContainer";
 
 export * from "./types/GhostOptions";
-export * from "./types/GhostEvent";
+export * from "./types/GhostListener";
 export * from "./types/GhostCommandOptions";
 export * from "./types/GhostPlugin";

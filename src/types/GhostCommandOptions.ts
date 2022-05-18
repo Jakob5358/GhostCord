@@ -18,7 +18,7 @@ export interface GhostCommandOptions {
 	/**
 	 * The slash command options
 	 */
-	options: SlashCommandBuilder | Omit<SlashCommandBuilder, "addSubcommand" | "addSubcommandGroup">;
+	options?: SlashCommandBuilder | Omit<SlashCommandBuilder, "addSubcommand" | "addSubcommandGroup">;
 	/**
 	 * Permissions needed for the bot to run the command
 	 */

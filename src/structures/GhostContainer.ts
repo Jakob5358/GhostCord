@@ -1,6 +1,7 @@
+import ServiceContainer from "typedi";
 import type { GhostGlobalConfig } from "../types/GhostContainer";
+import { GhostPlugin } from "../types/GhostPlugin";
 import { GhostLogger } from "../utils/logger";
-import { GhostPluginManager } from "./GhostPlugin";
 
 /**
  * Container for the a ghost component.
@@ -9,9 +10,10 @@ import { GhostPluginManager } from "./GhostPlugin";
  */
 export interface GhostContainer {
 	logger: GhostLogger;
-	PluginManager: GhostPluginManager;
+	plugins: GhostPlugin[];
 	config: (options?: Partial<GhostGlobalConfig>) => GhostGlobalConfig;
 	defaultConfig: GhostGlobalConfig;
+	services: typeof ServiceContainer;
 }
 
 /**
@@ -24,8 +26,9 @@ export const container: GhostContainer = {
 	config(options) {
 		return { ...this.defaultConfig, ...options };
 	},
-	PluginManager: new GhostPluginManager(),
+	plugins: [],
 	defaultConfig: {
 		debug: false,
 	},
+	services: ServiceContainer,
 };
